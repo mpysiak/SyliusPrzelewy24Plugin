@@ -13,12 +13,12 @@ ADDITIONAL
 ## Requirements:
 We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
-| Package       | Version         |
-|---------------|-----------------|
-| PHP           | \>=8.0          |
-| sylius/sylius | 1.12.x - 1.13.x |
-| MySQL         | \>= 5.7         |
-| NodeJS        | \>= 14.17.x     |
+| Package       | Version  |
+|---------------|----------|
+| PHP           | \>=8.2   |
+| sylius/sylius | ^2.0     |
+| MySQL         | \>= 8.4  |
+| NodeJS        | \>= 20.x |
 
 ## Composer:
 ```bash
