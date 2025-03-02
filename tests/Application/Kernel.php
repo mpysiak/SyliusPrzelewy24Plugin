@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusPrzelewy24Plugin\Application;
 
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
-use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
+use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -13,7 +13,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Routing\RouteCollectionBuilder;
 
 final class Kernel extends BaseKernel
 {
@@ -77,7 +76,7 @@ final class Kernel extends BaseKernel
 
     private function isTestEnvironment(): bool
     {
-        return 0 === strpos($this->getEnvironment(), 'test');
+        return str_starts_with($this->getEnvironment(), 'test');
     }
 
     private function loadContainerConfiguration(LoaderInterface $loader, string $confDir): void
@@ -114,7 +113,7 @@ final class Kernel extends BaseKernel
     private function getConfigurationDirectories(): iterable
     {
         yield $this->getProjectDir() . '/config';
-        $syliusConfigDir = $this->getProjectDir() . '/config/sylius/' . SyliusKernel::MAJOR_VERSION . '.' . SyliusKernel::MINOR_VERSION;
+        $syliusConfigDir = $this->getProjectDir() . '/config/sylius/' . SyliusCoreBundle::MAJOR_VERSION . '.' . SyliusCoreBundle::MINOR_VERSION;
         if (is_dir($syliusConfigDir)) {
             yield $syliusConfigDir;
         }
