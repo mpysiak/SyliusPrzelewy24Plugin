@@ -23,28 +23,14 @@ use Tests\BitBag\SyliusPrzelewy24Plugin\Behat\Service\Mocker\Przelewy24ApiMocker
 
 final class Przelewy24CheckoutPage extends Page implements Przelewy24CheckoutPageInterface
 {
-    private Przelewy24ApiMocker $przelewy24ApiMocker;
-
-    private RepositoryInterface $securityTokenRepository;
-
-    private EntityRepository $paymentRepository;
-
-    private AbstractBrowser $client;
-
     public function __construct(
         Session $session,
         MinkParameters $parameters,
-        Przelewy24ApiMocker $przelewy24ApiMocker,
-        RepositoryInterface $securityTokenRepository,
-        EntityRepository $paymentRepository,
-        AbstractBrowser $client
+        private readonly Przelewy24ApiMocker $przelewy24ApiMocker,
+        private readonly RepositoryInterface $securityTokenRepository,
+        private readonly EntityRepository $paymentRepository,
     ) {
         parent::__construct($session, $parameters);
-
-        $this->przelewy24ApiMocker = $przelewy24ApiMocker;
-        $this->paymentRepository = $paymentRepository;
-        $this->securityTokenRepository = $securityTokenRepository;
-        $this->client = $client;
     }
 
     public function pay(): void

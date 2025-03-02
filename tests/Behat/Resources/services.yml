@@ -6,4 +6,4 @@ services:
         class: Tests\BitBag\SyliusPrzelewy24Plugin\Behat\Service\Mocker\Przelewy24ApiMocker
         public: true
         arguments:
-            - "@sylius.behat.mocker"
+            - "@service_container"

@@ -15,11 +15,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 final class Przelewy24Bridge implements Przelewy24BridgeInterface
 {
-    private ContainerInterface $container;
-
-    public function __construct(ContainerInterface $container)
+    public function __construct(private readonly ContainerInterface $container)
     {
-        $this->container = $container;
     }
 
     public function setAuthorizationData(

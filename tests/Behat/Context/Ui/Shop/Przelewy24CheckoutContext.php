@@ -18,24 +18,12 @@ use Tests\BitBag\SyliusPrzelewy24Plugin\Behat\Service\Mocker\Przelewy24ApiMocker
 
 final class Przelewy24CheckoutContext implements Context
 {
-    private CompletePageInterface $summaryPage;
-
-    private Przelewy24CheckoutPageInterface $przelewy24CheckoutPage;
-
-    private ShowPageInterface $orderDetails;
-
-    private Przelewy24ApiMocker $przelewy24ApiMocker;
-
     public function __construct(
-        CompletePageInterface $summaryPage,
-        Przelewy24CheckoutPageInterface $przelewy24CheckoutPage,
-        ShowPageInterface $orderDetails,
-        Przelewy24ApiMocker $przelewy24ApiMocker
+        private readonly CompletePageInterface $summaryPage,
+        private readonly Przelewy24CheckoutPageInterface $przelewy24CheckoutPage,
+        private readonly ShowPageInterface $orderDetails,
+        private readonly Przelewy24ApiMocker $przelewy24ApiMocker
     ) {
-        $this->summaryPage = $summaryPage;
-        $this->przelewy24CheckoutPage = $przelewy24CheckoutPage;
-        $this->orderDetails = $orderDetails;
-        $this->przelewy24ApiMocker = $przelewy24ApiMocker;
     }
 
     /**

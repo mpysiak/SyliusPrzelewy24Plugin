@@ -11,21 +11,18 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusPrzelewy24Plugin\Behat\Service\Mocker;
 
 use BitBag\SyliusPrzelewy24Plugin\Bridge\Przelewy24BridgeInterface;
-use Sylius\Behat\Service\Mocker\MockerInterface;
+use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 
 final class Przelewy24ApiMocker
 {
-    private MockerInterface $mocker;
-
-    public function __construct(MockerInterface $mocker)
+    public function __construct(private readonly MockerContainer $mocker)
     {
-        $this->mocker = $mocker;
     }
 
     public function mockApiSuccessfulVerifyTransaction(callable $action): void
     {
         $mockService = $this->mocker
-            ->mockService('bitbag_sylius_przelewy24_plugin.bridge.przelewy24', Przelewy24BridgeInterface::class)
+            ->mock('bitbag_sylius_przelewy24_plugin.bridge.przelewy24', Przelewy24BridgeInterface::class)
         ;
 
         $mockService->shouldReceive('setAuthorizationData');
@@ -34,6 +31,6 @@ final class Przelewy24ApiMocker
 
         $action();
 
-        $this->mocker->unmockService('bitbag_sylius_przelewy24_plugin.bridge.przelewy24');
+        $this->mocker->unmock('bitbag_sylius_przelewy24_plugin.bridge.przelewy24');
     }
 }

@@ -17,16 +17,10 @@ use Tests\BitBag\SyliusPrzelewy24Plugin\Behat\Page\Admin\PaymentMethod\CreatePag
 
 final class ManagingPaymentMethodPrzelewy24Context implements Context
 {
-    private CurrentPageResolverInterface $currentPageResolver;
-
-    private CreatePageInterface $createPage;
-
     public function __construct(
-        CurrentPageResolverInterface $currentPageResolver,
-        CreatePageInterface $createPage
+        private readonly CurrentPageResolverInterface $currentPageResolver,
+        private readonly CreatePageInterface $createPage
     ) {
-        $this->createPage = $createPage;
-        $this->currentPageResolver = $currentPageResolver;
     }
 
     /**

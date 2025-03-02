@@ -20,24 +20,12 @@ use Sylius\Component\Core\Repository\PaymentMethodRepositoryInterface;
 
 final class Przelewy24Context implements Context
 {
-    private SharedStorageInterface $sharedStorage;
-
-    private PaymentMethodRepositoryInterface $paymentMethodRepository;
-
-    private ExampleFactoryInterface $paymentMethodExampleFactory;
-
-    private EntityManagerInterface $paymentMethodManager;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        PaymentMethodRepositoryInterface $paymentMethodRepository,
-        ExampleFactoryInterface $paymentMethodExampleFactory,
-        EntityManagerInterface $paymentMethodManager
+        private readonly SharedStorageInterface $sharedStorage,
+        private readonly PaymentMethodRepositoryInterface $paymentMethodRepository,
+        private readonly ExampleFactoryInterface $paymentMethodExampleFactory,
+        private readonly EntityManagerInterface $paymentMethodManager
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->paymentMethodRepository = $paymentMethodRepository;
-        $this->paymentMethodExampleFactory = $paymentMethodExampleFactory;
-        $this->paymentMethodManager = $paymentMethodManager;
     }
 
     /**
