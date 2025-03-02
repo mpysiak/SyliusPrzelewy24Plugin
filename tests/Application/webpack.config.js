@@ -19,7 +19,8 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
-    .enableSassLoader();
+    .enableSassLoader()
+;
 
 const appShopConfig = Encore.getWebpackConfig();
 
