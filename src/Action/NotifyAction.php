@@ -27,11 +27,8 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface, GatewayA
 {
     use GatewayAwareTrait;
 
-    private Przelewy24BridgeInterface $przelewy24Bridge;
-
-    public function __construct(Przelewy24BridgeInterface $przelewy24Bridge)
+    public function __construct(private Przelewy24BridgeInterface $przelewy24Bridge)
     {
-        $this->przelewy24Bridge = $przelewy24Bridge;
     }
 
     public function setApi($api): void
@@ -61,7 +58,7 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface, GatewayA
 
         $details['p24_order_id'] = $httpRequest->request['p24_order_id'];
 
-        if (true === $this->przelewy24Bridge->trnVerify($this->getPosData($details))) {
+        if ($this->przelewy24Bridge->trnVerify($this->getPosData($details))) {
             $details['p24_status'] = Przelewy24BridgeInterface::COMPLETED_STATUS;
 
             return;
@@ -80,14 +77,7 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface, GatewayA
 
     private function getPosData(ArrayObject $details): array
     {
-        $posData = [];
-
-        $posData['p24_session_id'] = $details['p24_session_id'];
-        $posData['p24_amount'] = $details['p24_amount'];
-        $posData['p24_currency'] = $details['p24_currency'];
-        $posData['p24_order_id'] = $details['p24_order_id'];
-
-        return $posData;
+        return ['p24_session_id' => $details['p24_session_id'], 'p24_amount' => $details['p24_amount'], 'p24_currency' => $details['p24_currency'], 'p24_order_id' => $details['p24_order_id']];
     }
 
     private function verifySign(GetHttpRequest $request): bool

@@ -27,13 +27,10 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Generic
 {
     use GatewayAwareTrait;
 
-    private ?GenericTokenFactoryInterface $tokenFactory;
+    private ?GenericTokenFactoryInterface $tokenFactory = null;
 
-    private Przelewy24BridgeInterface $przelewy24Bridge;
-
-    public function __construct(Przelewy24BridgeInterface $przelewy24Bridge)
+    public function __construct(private Przelewy24BridgeInterface $przelewy24Bridge)
     {
-        $this->przelewy24Bridge = $przelewy24Bridge;
     }
 
     public function setApi($api): void

@@ -23,11 +23,8 @@ final class ConvertPaymentAction implements ActionInterface
 {
     use GatewayAwareTrait;
 
-    private PaymentDescriptionProviderInterface $paymentDescriptionProvider;
-
-    public function __construct(PaymentDescriptionProviderInterface $paymentDescriptionProvider)
+    public function __construct(private PaymentDescriptionProviderInterface $paymentDescriptionProvider)
     {
-        $this->paymentDescriptionProvider = $paymentDescriptionProvider;
     }
 
     public function execute($request): void
@@ -60,13 +57,7 @@ final class ConvertPaymentAction implements ActionInterface
 
     private function getPaymentData(PaymentInterface $payment): array
     {
-        $paymentData = [];
-
-        $paymentData['p24_amount'] = $payment->getAmount();
-        $paymentData['p24_currency'] = $payment->getCurrencyCode();
-        $paymentData['p24_description'] = $this->paymentDescriptionProvider->getPaymentDescription($payment);
-
-        return $paymentData;
+        return ['p24_amount' => $payment->getAmount(), 'p24_currency' => $payment->getCurrencyCode(), 'p24_description' => $this->paymentDescriptionProvider->getPaymentDescription($payment)];
     }
 
     private function getCustomerData(OrderInterface $order): array
@@ -75,11 +66,11 @@ final class ConvertPaymentAction implements ActionInterface
 
         $customerData['p24_language'] = $order->getLocaleCode();
 
-        if (null !== $customer = $order->getCustomer()) {
+        if (($customer = $order->getCustomer()) instanceof \Sylius\Component\Customer\Model\CustomerInterface) {
             $customerData['p24_email'] = $customer->getEmail();
         }
 
-        if (null !== $address = $order->getShippingAddress()) {
+        if (($address = $order->getShippingAddress()) instanceof \Sylius\Component\Core\Model\AddressInterface) {
             $customerData['p24_address'] = $address->getStreet();
             $customerData['p24_zip'] = $address->getPostcode();
             $customerData['p24_country'] = $address->getCountryCode();

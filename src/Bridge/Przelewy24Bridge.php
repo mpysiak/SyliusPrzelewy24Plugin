@@ -21,7 +21,7 @@ final class Przelewy24Bridge implements Przelewy24BridgeInterface
     private string $environment = self::SANDBOX_ENVIRONMENT;
 
     public function __construct(
-        private ClientInterface $client,
+        private readonly ClientInterface $client,
     ) {
     }
 
