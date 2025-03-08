@@ -1,0 +1,12 @@
+{
+  "build/admin/admin-entry.css": "/build/admin/admin-entry.css",
+  "build/admin/admin-entry.js": "/build/admin/admin-entry.js",
+  "build/admin/admin-product-entry.js": "/build/admin/admin-product-entry.js",
+  "build/admin/fonts/InterVariable-Italic.woff2": "/build/admin/fonts/InterVariable-Italic.01dcbad1.woff2",
+  "build/admin/fonts/InterVariable.woff2": "/build/admin/fonts/InterVariable.c504db5c.woff2",
+  "build/admin/images/404.svg": "/build/admin/images/404.1e239d24.svg",
+  "build/admin/images/sylius-logo-dark-text.png": "/build/admin/images/sylius-logo-dark-text.72a9465e.png",
+  "build/admin/images/no_data.svg": "/build/admin/images/no_data.670a72c7.svg",
+  "build/admin/images/sylius-logo.svg": "/build/admin/images/sylius-logo.33ca6b62.svg",
+  "build/admin/images/loader.svg": "/build/admin/images/loader.64deb632.svg"
+}

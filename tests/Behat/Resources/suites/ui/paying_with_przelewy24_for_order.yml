@@ -31,7 +31,6 @@ default:
 
                 - bitbag_sylius_przelewy24_plugin.context.setup.przelewy24
 
-                - sylius.behat.context.ui.paypal
                 - sylius.behat.context.ui.shop.cart
                 - sylius.behat.context.ui.shop.checkout
                 - sylius.behat.context.ui.shop.checkout.addressing

@@ -1,0 +1,22 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.payment_method.create.content.form.sections.gateway_configuration.przelewy24':
+            merchant_id:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/merchant_id.html.twig'
+                priority: -100
+            crc_key:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/crc_key.html.twig'
+                priority: -200
+            environment:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/environment.html.twig'
+                priority: -300
+        'sylius_admin.payment_method.update.content.form.sections.gateway_configuration.przelewy24':
+            merchant_id:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/merchant_id.html.twig'
+                priority: -100
+            crc_key:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/crc_key.html.twig'
+                priority: -200
+            environment:
+                template: '@BitBagSyliusPrzelewy24Plugin/admin/payment_method/form/section/gateway_configuration/environment.html.twig'
+                priority: -300

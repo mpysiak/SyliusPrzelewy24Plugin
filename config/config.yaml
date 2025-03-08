@@ -1,0 +1,2 @@
+imports:
+    - { resource: '@BitBagSyliusPrzelewy24Plugin/config/app/twig_hooks/**/*.yaml' }

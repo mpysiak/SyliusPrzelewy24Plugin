@@ -12,7 +12,7 @@ Feature: Paying with Przelewy24 during checkout
         And the store ships everywhere for free
         And I am logged in as "john@bitbag.pl"
 
-    @ui
+    @ui @javascript
     Scenario: Successful payment
         Given I added product "PHP T-Shirt" to the cart
         And I have proceeded selecting "Przelewy24" payment method
@@ -20,7 +20,7 @@ Feature: Paying with Przelewy24 during checkout
         And I sign in to Przelewy24 and pay successfully
         Then I should be notified that my payment has been completed
 
-    @ui
+    @ui @javascript
     Scenario: Cancelling the payment
         Given I added product "PHP T-Shirt" to the cart
         And I have proceeded selecting "Przelewy24" payment method

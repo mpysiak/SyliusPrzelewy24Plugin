@@ -8,7 +8,7 @@ Feature: Adding a new payment method
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @ui
+    @ui @javascript
     Scenario: Adding a new Przelewy24 payment method
         Given I want to create a new Przelewy24 payment method
         When I name it "Przelewy24" in "English (United States)"

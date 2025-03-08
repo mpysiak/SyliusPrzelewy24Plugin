@@ -29,7 +29,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface, Generic
 
     private ?GenericTokenFactoryInterface $tokenFactory = null;
 
-    public function __construct(private Przelewy24BridgeInterface $przelewy24Bridge)
+    public function __construct(private readonly Przelewy24BridgeInterface $przelewy24Bridge)
     {
     }
 

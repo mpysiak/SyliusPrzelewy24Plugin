@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@BitBagSyliusPrzelewy24Plugin/config/config.yaml" }
